@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dolarexchange</title>
+	</head>	
+
+	<body>
+		<h1>Register at Dolarexchange</h1>
+	
+		{% if registered %}
+		Dolarexchange says: <strong>Ready to fix Venezuela's economy?</strong>
+		<a href="/rango/">Return to the homepage.</a><br />
+		{% else %}
+		Rango says: <strong> Register here!</strong><br />
+
+		<form id="user_form" method="post" action="/rango/register/"
+			enctype="multipart/form-data">
+	
+		{% csrf_token %}
+
+		<!-- as_p method makes each element appear a new line, neater approach -->
+		{{ user_form.as_p }}
+		{{ profile_form.as_p }}
+		
+		<!-- Provide a button to click to subtim the form. -->
+		<input type="submit" name="submit" value="Register" />
+		</form>
+		{% endif %}
+	</body>
+</html>

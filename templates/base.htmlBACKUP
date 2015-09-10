@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load url from future %}
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Dolarexchange - {% block head_title %}Online market{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href='/static/css/style.css'/>
+  </head>
+  <body class="login_body">
+    {% block body %}
+
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+	{% for message in messages %}
+	<li>{{message}}</li>
+	{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div>
+      <strong>Menu:</strong>
+      <ul>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+	<li><a href="{% url 'account_logout' %}">Log Out</a></li>
+	<li><a href="/accounts/profile/">My Account</a>
+	<li><a href="/rango/add_category"}>Add a New Category</a></li>
+	<li><a href="{% url 'restricted' %}">Restricted Page</a></li>
+	{% else %}
+	{% load url from future %}
+	{% load socialaccount %}
+	<li><a href="{% url 'account_login' %}">Sign In</a></li>
+	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+	<li><a href="{% provider_login_url 'facebook' method='js_sdk' %}"> Sign Up / Login with Facebook</a>
+	{% endif %}
+
+      <li><a href="{% url 'about' %}">About</a></li>
+      </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+</html>

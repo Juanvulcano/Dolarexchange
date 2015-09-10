@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load staticfiles %} <!-- New line -->
+
+{% block title %} Index {% endblock %}
+
+
+{% block body %}	
+{% if user.is_authenticated %}
+	<div class="page-header">
+			<div class="insetss"><h2>Listo para arreglar la economia de Venezuela, {{ user.username }} ?</h2></div>
+		{% else %}
+			<h2>Listo para solucionar este desastre economico?</h2>
+		{% endif %}
+</div>
+
+		<div class="inset">
+		    <div class="panel-heading">
+			<h4>Most liked Categories</h4>
+		     {% if categories %}
+			    <u1 class="list-group">
+			    	{% for category in categories %}
+			    	 <li class="list-group-item"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+			    	{% endfor %}
+		             </u1>
+		      {% else %}
+		 	<strong> There are no categories present. </strong><br />
+		      {% endif %}
+		</div>
+		<div class="panel-heading">
+		   <h4> Most viewed pages</h4>
+		   {% if pages %}
+			<u1 class="list-group">
+			    {% for page in pages %}
+			    <li class="list-group-item"><a href="/rango/category/{{ page.category.slug }}">{{ page.title }}</li> 
+			    {% endfor %}
+			</u1>
+		{% else %}
+			<strong>There are no pages present.</strong>
+		{% endif %}
+		</div>
+		</div>
+		<p> visits: {{ visits }}</p>
+		 {% endblock%}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+        <head>
+                <title>Page does'nt exist</title>
+        </head>
+
+        <body>
+                <h1>Sorry but that category does not exist</h1>
+                We are really sorry! Why don't you go back to the index? <strong>{{ boldmessage }}</strong><br />
+                <a href="/rango">Index</a><br />
+                <img src="{% static "images/Poker.jpg" %}" alt="Picture of Cards" /> <!-- New line -->
+        </body>
+
+</html>
+
