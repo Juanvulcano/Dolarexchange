@@ -9,9 +9,9 @@
 {% block body %}	
 {% if user.is_authenticated %}
 	<div class="page-header">
-			<div class="insetss"><h2>Listo para arreglar la economia de Venezuela, {{ user.username }} ?</h2></div>
+			<div class="insetss"><h2>Listo para arreglar la economia de Venezuela, {{ user.first_name }} ?</h2></div>
 		{% else %}
-			<h2>Listo para solucionar este desastre economico?</h2>
+			<div class="insetss"><h2>Listo para solucionar este desastre economico?</h2></div>
 		{% endif %}
 </div>
 

@@ -22,14 +22,14 @@ with open('/home/maker/secret_key.txt') as f:
 	SECRET_KEY = f.read().strip() 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 TEMPLATE_DIRS = (TEMPLATE_PATH,)
 
 ALLOWED_HOSTS = [
-	'www.dolarexchange.com',]
+	'*',]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
         #Required by 'allauth' template tags
